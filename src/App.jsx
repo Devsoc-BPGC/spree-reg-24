@@ -87,15 +87,17 @@ function Register(
   resState,
   city
 ) {
-  console.log(
-    fullName,
-    email,
-    phoneNumber,
-    gender,
-    collegeName,
-    resState,
-    city
-  );
+  const registrationData = {
+    fullName: fullName,
+    email: email,
+    phoneNumber: phoneNumber,
+    gender: gender,
+    collegeName: collegeName,
+    resState: resState,
+    city: city,
+  };
+
+  console.log(registrationData);
 }
 
 export default App;
