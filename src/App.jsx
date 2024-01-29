@@ -15,13 +15,15 @@ function App() {
   const [collegeName, setCollegeName] = useState("");
   const [resState, setResState] = useState("");
   const [city, setCity] = useState("");
-
+  const [sport,setSport] = useState("");
+  const [data,setData]=useState();
   const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
   }
   useEffect(() => {
+    console.log(sport);
     window.addEventListener("resize", handleWindowSizeChange);
     return () => {
       window.removeEventListener("resize", handleWindowSizeChange);
@@ -51,8 +53,8 @@ function App() {
         />
         {isMobile && <ModeSelector setMode={setMode} mode={mode} />}
 
-        {mode == "individual" && <SportIndividual />}
-        {mode == "team" && <SportTeam />}
+        {mode == "individual" && <SportIndividual sport={sport} setSport={setSport}/>}
+        {mode == "team" && <SportTeam sport={sport} setSport={setSport} data={data} setData={setData} />}
       </div>
       <div className="flex justify-start items-center lg:w-4/5">
         <div className="lg:w-5/12 flex justify-center items-center">
@@ -66,7 +68,10 @@ function App() {
                 gender,
                 collegeName,
                 resState,
-                city
+                city,
+                sport,
+                mode,
+                data
               )
             }
           >
@@ -85,7 +90,10 @@ function Register(
   gender,
   collegeName,
   resState,
-  city
+  city,
+  sport,
+  mode,
+  data
 ) {
   const registrationData = {
     fullName: fullName,
@@ -95,9 +103,46 @@ function Register(
     collegeName: collegeName,
     resState: resState,
     city: city,
+    sport: sport,
+    mode: mode,
+    data: data
   };
 
   console.log(registrationData);
+  const date = new Date();
+        var ISToffSet = 330; //IST is 5:30; i.e. 60*5+30 = 330 in minutes 
+        var ISTTime = new Date(date.getTime()+ISToffSet*60*1000);
+    
+    
+        let usr_data = {
+            Submit_Time: ISTTime,
+            Name: registrationData.fullName,
+            Gender: registrationData.gender,
+            Email: registrationData.email,
+            Mobile_No: registrationData.phoneNumber,
+            College_Name: registrationData.collegeName,
+            State:registrationData.resState,
+            City:registrationData.city
+        };
+    
+
+        fetch("apikey", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(usr_data),
+        })
+            .then((r) => r.json())
+            .then((data) => {
+            // The response comes here
+            console.log(data);
+            })
+            .catch((error) => {
+            // Errors are reported there
+            console.log(error);
+            });
 }
 
 export default App;

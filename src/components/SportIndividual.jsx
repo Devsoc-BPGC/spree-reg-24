@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-function SportIndividual() {
-  const [sport, setSport] = useState("");
+function SportIndividual(props) {
+  // const [sport, setSport] = useState("");
+  // console.log(props.sport);
 
   const sports = [
     "Basketball",
@@ -25,14 +26,14 @@ function SportIndividual() {
             <div
               key={index}
               className={`border-white border-2 rounded-lg h-9 cursor-pointer flex justify-center items-center w-5/12 m-1 ${
-                sport === sportName ? "bg-[#089da8] text-[#bf3535] " : ""
+                props.sport === sportName ? "bg-[#089da8] text-[#bf3535] " : ""
               }`}
               onClick={() => {
-                setSport(sportName);
+                props.setSport(sportName);
               }}
               style={{
                 textShadow:
-                  sport === sportName
+                  props.sport === sportName
                     ? "1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff"
                     : "",
               }}
