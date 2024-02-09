@@ -15,8 +15,15 @@ function App() {
   const [collegeName, setCollegeName] = useState("");
   const [resState, setResState] = useState("");
   const [city, setCity] = useState("");
-  const [sport,setSport] = useState("");
-  const [data,setData]=useState();
+  const [sport, setSport] = useState("");
+  const [teamData, setTeamData] = useState([
+    { fullName: "", phoneNumber: "" },
+    { fullName: "", phoneNumber: "" },
+    { fullName: "", phoneNumber: "" },
+    { fullName: "", phoneNumber: "" },
+  ]);
+
+  const [poc, setPoc] = useState({ fullName: "", phoneNumber: "" });
   const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowSizeChange() {
@@ -53,14 +60,25 @@ function App() {
         />
         {isMobile && <ModeSelector setMode={setMode} mode={mode} />}
 
-        {mode == "individual" && <SportIndividual sport={sport} setSport={setSport}/>}
-        {mode == "team" && <SportTeam sport={sport} setSport={setSport} data={data} setData={setData} />}
+        {mode == "individual" && (
+          <SportIndividual sport={sport} setSport={setSport} />
+        )}
+        {mode == "team" && (
+          <SportTeam
+            sport={sport}
+            setSport={setSport}
+            teamData={teamData}
+            setTeamData={setTeamData}
+            setPoc={setPoc}
+            poc={poc}
+          />
+        )}
       </div>
       <div className="flex justify-start items-center lg:w-4/5">
         <div className="lg:w-5/12 flex justify-center items-center">
           <button
             className="border-white border-2 rounded-lg text-white text-2xl px-5 py-2 font-Tourney font-black"
-            onClick={() =>
+            onClick={() => {
               Register(
                 fullName,
                 email,
@@ -71,9 +89,10 @@ function App() {
                 city,
                 sport,
                 mode,
-                data
-              )
-            }
+                teamData,
+                poc
+              );
+            }}
           >
             REGISTER
           </button>
@@ -93,7 +112,8 @@ function Register(
   city,
   sport,
   mode,
-  data
+  teamData,
+  poc
 ) {
   const registrationData = {
     fullName: fullName,
@@ -105,44 +125,43 @@ function Register(
     city: city,
     sport: sport,
     mode: mode,
-    data: data
+    teamData: teamData,
+    poc: poc,
   };
 
-  console.log(registrationData);
+  // console.log(registrationData);
   const date = new Date();
-        var ISToffSet = 330; //IST is 5:30; i.e. 60*5+30 = 330 in minutes 
-        var ISTTime = new Date(date.getTime()+ISToffSet*60*1000);
-    
-    
-        let usr_data = {
-            Submit_Time: ISTTime,
-            Name: registrationData.fullName,
-            Gender: registrationData.gender,
-            Email: registrationData.email,
-            Mobile_No: registrationData.phoneNumber,
-            College_Name: registrationData.collegeName,
-            State:registrationData.resState,
-            City:registrationData.city
-        };
-    
+  var ISToffSet = 330; //IST is 5:30; i.e. 60*5+30 = 330 in minutes
+  var ISTTime = new Date(date.getTime() + ISToffSet * 60 * 1000);
 
-        fetch("apikey", {
-            method: "POST",
-            mode: "cors",
-            headers: {
-            "Content-Type": "application/json",
-            },
-            body: JSON.stringify(usr_data),
-        })
-            .then((r) => r.json())
-            .then((data) => {
-            // The response comes here
-            console.log(data);
-            })
-            .catch((error) => {
-            // Errors are reported there
-            console.log(error);
-            });
+  let usr_data = {
+    Submit_Time: ISTTime,
+    Name: registrationData.fullName,
+    Gender: registrationData.gender,
+    Email: registrationData.email,
+    Mobile_No: registrationData.phoneNumber,
+    College_Name: registrationData.collegeName,
+    State: registrationData.resState,
+    City: registrationData.city,
+  };
+
+  fetch("apikey", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(usr_data),
+  })
+    .then((r) => r.json())
+    .then((data) => {
+      // The response comes here
+      console.log(data);
+    })
+    .catch((error) => {
+      // Errors are reported there
+      console.log(error);
+    });
 }
 
 export default App;

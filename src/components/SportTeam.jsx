@@ -1,9 +1,44 @@
 import { useState, useEffect } from "react";
 import "./SportTeam.css";
 
-const Team = ({ m }) => {
-  const [fullName, setFullName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+const sportList = [
+  { value: "", label: "Sport", disabled: true, hidden: true },
+  { value: "Basketball", label: "Basketball" },
+  { value: "Badminton", label: "Badminton" },
+  { value: "Carrom", label: "Carrom" },
+  { value: "Chess", label: "Chess" },
+  { value: "Cricket", label: "Cricket" },
+  { value: "Kabaddi", label: "Kabaddi" },
+  { value: "Powerlifting", label: "Powerlifting" },
+  { value: "Squash", label: "Squash" },
+  { value: "Tennis", label: "Tennis" },
+  { value: "Table Tennis", label: "Table Tennis" },
+  { value: "Volleyball", label: "Volleyball" },
+];
+const Team = ({ m, i, teamData, setTeamData }) => {
+  // const [fullName, setFullName] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState("");
+  // console.log(i);
+
+  // useEffect(() => {
+  //   console.log(teamData);
+  // }, [teamData]);
+
+  const handleFullNameChange = (e) => {
+    teamData[i] = {
+      ...teamData[i],
+      fullName: e.target.value,
+    };
+    setTeamData([...teamData]);
+  };
+
+  const handlePhoneNumberChange = (e) => {
+    teamData[i] = {
+      ...teamData[i],
+      phoneNumber: e.target.value,
+    };
+    setTeamData([...teamData]);
+  };
 
   return (
     <div
@@ -15,23 +50,25 @@ const Team = ({ m }) => {
       <input
         type="text"
         placeholder="Full Name"
-        value={fullName}
-        onChange={(e) => setFullName(e.target.value)}
+        // value={teamData[i]?.fullName}
+        onChange={handleFullNameChange}
         className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"
       />
       <input
         type="number"
         placeholder="Phone Number"
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
+        // value={teamData[i]?.phoneNumber}
+        onChange={handlePhoneNumberChange}
         className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"
       />
     </div>
   );
 };
 
-const SportTeam = () => {
+const SportTeam = ({ sport, setSport, setTeamData, teamData, poc, setPoc }) => {
   const [width, setWidth] = useState(window.innerWidth);
+
+  const [index, setIndex] = useState(3);
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
@@ -43,13 +80,33 @@ const SportTeam = () => {
     };
   }, []);
 
+  // const [teamData, setTeamData] = useState([
+  //   { fullName: "", phoneNumber: "" },
+  //   { fullName: "", phoneNumber: "" },
+  //   { fullName: "", phoneNumber: "" },
+  //   { fullName: "", phoneNumber: "" },
+  // ]);
+
+  // useEffect(() => {
+  //   console.log(teamData);
+  //   console.log(sport);
+  // }, [teamData, sport]);
+
   const isMobile = width <= 768;
   const [data, setData] = useState([
-    <Team m={1} />,
-    <Team />,
-    <Team />,
-    <Team />,
+    <Team m={1} i={0} teamData={teamData} setTeamData={setTeamData} />,
+    <Team i={1} teamData={teamData} setTeamData={setTeamData} />,
+    <Team i={2} teamData={teamData} setTeamData={setTeamData} />,
+    <Team i={3} teamData={teamData} setTeamData={setTeamData} />,
   ]);
+
+  const handleAdd = async () => {
+    setData((prevData) => [
+      ...prevData,
+      <Team i={index + 1} setTeamData={setTeamData} teamData={teamData} />,
+    ]);
+    setIndex((prevIndex) => prevIndex + 1);
+  };
   return (
     <>
       <div className="flex justify-between items-center flex-col h-full lg:w-5/12">
@@ -57,7 +114,7 @@ const SportTeam = () => {
           {/* <div> */}
           <button
             className={`add ${isMobile && "mr-[-40vw] mt-16"}`}
-            onClick={() => setData((d) => [...d, <Team />])}
+            onClick={handleAdd}
           >
             +
           </button>
@@ -67,49 +124,20 @@ const SportTeam = () => {
               placeholder="Sport"
               required
               className="bg-transparent border-white border-2 rounded-lg h-9 px-2 w-full outline-none text-ggrey"
+              onChange={(e) => setSport(e.target.value)}
+              value={sport}
             >
-              <option
-                className="bg-transparent "
-                value=""
-                selected
-                disabled
-                hidden
-              >
-                Sport
-              </option>
-              <option className="bg-transparent text-black" value="M">
-                Basketball
-              </option>
-              <option className="bg-transparent text-black" value="F">
-                Badminton
-              </option>
-              <option className="bg-transparent text-black" value="F">
-                Carrom
-              </option>
-              <option className="bg-transparent text-black" value="F">
-                Chess
-              </option>
-              <option className="bg-transparent text-black" value="F">
-                Cricket
-              </option>
-              <option className="bg-transparent text-black" value="F">
-                Kabaddi
-              </option>
-              <option className="bg-transparent text-black" value="F">
-                Powerlifting
-              </option>
-              <option className="bg-transparent text-black" value="F">
-                Squash
-              </option>
-              <option className="bg-transparent text-black" value="F">
-                Tennis
-              </option>
-              <option className="bg-transparent text-black" value="F">
-                Table Tennis
-              </option>
-              <option className="bg-transparent text-black" value="F">
-                Volleyball
-              </option>
+              {sportList.map((option, index) => (
+                <option
+                  key={index}
+                  value={option.value}
+                  disabled={option.disabled}
+                  hidden={option.hidden}
+                  className="bg-transparent"
+                >
+                  {option.label}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -117,22 +145,6 @@ const SportTeam = () => {
           className="flex justify-center items-center flex-col py-5 w-full border-white border-2 rounded-lg text-ggrey"
           style={{ paddingTop: "0rem", overflowY: "scroll", margin: "1rem" }}
         >
-          {/* <div className="flex justify-between items-center w-4/5">
-                    <input type="text" placeholder="Full Name" className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"></input>
-                    <input type="number" placeholder="Phone Number" className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"></input>
-                </div>
-                <div className="flex justify-between items-center w-4/5">
-                    <input type="text" placeholder="Full Name" className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"></input>
-                    <input type="number" placeholder="Phone Number" className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"></input>
-                </div>
-                <div className="flex justify-between items-center w-4/5">
-                    <input type="text" placeholder="Full Name" className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"></input>
-                    <input type="number" placeholder="Phone Number" className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"></input>
-                </div>
-                <div className="flex justify-between items-center w-4/5">
-                    <input type="text" placeholder="Full Name" className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"></input>
-                    <input type="number" placeholder="Phone Number" className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"></input>
-                </div> */}
           {data}
         </div>
         <div className="flex justify-center items-center py-5 flex-col w-full border-white border-2 rounded-lg text-ggrey">
@@ -142,11 +154,23 @@ const SportTeam = () => {
               type="text"
               placeholder="Full Name"
               className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"
+              onChange={(e) =>
+                setPoc((prevPoc) => ({
+                  ...prevPoc,
+                  fullName: e.target.value,
+                }))
+              }
             ></input>
             <input
               type="number"
               placeholder="Phone Number"
               className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"
+              onChange={(e) =>
+                setPoc((prevPoc) => ({
+                  ...prevPoc,
+                  phoneNumber: e.target.value,
+                }))
+              }
             ></input>
           </div>
         </div>

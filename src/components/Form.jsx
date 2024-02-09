@@ -1,5 +1,47 @@
 import { useState, useEffect } from "react";
 
+const stateList = [
+  { value: "Andhra Pradesh", label: "Andhra Pradesh" },
+  {
+    value: "Andaman and Nicobar Islands",
+    label: "Andaman and Nicobar Islands",
+  },
+  { value: "Arunachal Pradesh", label: "Arunachal Pradesh" },
+  { value: "Assam", label: "Assam" },
+  { value: "Bihar", label: "Bihar" },
+  { value: "Chandigarh", label: "Chandigarh" },
+  { value: "Chhattisgarh", label: "Chhattisgarh" },
+  { value: "Dadar and Nagar Haveli", label: "Dadar and Nagar Haveli" },
+  { value: "Daman and Diu", label: "Daman and Diu" },
+  { value: "Delhi", label: "Delhi" },
+  { value: "Lakshadweep", label: "Lakshadweep" },
+  { value: "Puducherry", label: "Puducherry" },
+  { value: "Goa", label: "Goa" },
+  { value: "Gujarat", label: "Gujarat" },
+  { value: "Haryana", label: "Haryana" },
+  { value: "Himachal Pradesh", label: "Himachal Pradesh" },
+  { value: "Jammu and Kashmir", label: "Jammu and Kashmir" },
+  { value: "Jharkhand", label: "Jharkhand" },
+  { value: "Karnataka", label: "Karnataka" },
+  { value: "Kerala", label: "Kerala" },
+  { value: "Madhya Pradesh", label: "Madhya Pradesh" },
+  { value: "Maharashtra", label: "Maharashtra" },
+  { value: "Manipur", label: "Manipur" },
+  { value: "Meghalaya", label: "Meghalaya" },
+  { value: "Mizoram", label: "Mizoram" },
+  { value: "Nagaland", label: "Nagaland" },
+  { value: "Odisha", label: "Odisha" },
+  { value: "Punjab", label: "Punjab" },
+  { value: "Rajasthan", label: "Rajasthan" },
+  { value: "Sikkim", label: "Sikkim" },
+  { value: "Tamil Nadu", label: "Tamil Nadu" },
+  { value: "Telangana", label: "Telangana" },
+  { value: "Tripura", label: "Tripura" },
+  { value: "Uttar Pradesh", label: "Uttar Pradesh" },
+  { value: "Uttarakhand", label: "Uttarakhand" },
+  { value: "West Bengal", label: "West Bengal" },
+];
+
 document.addEventListener("wheel", function (event) {
   if (document.activeElement.type === "number") {
     document.activeElement.blur();
@@ -59,6 +101,7 @@ function Form(props) {
             placeholder="Gender"
             required
             className="bg-transparent border-white border-2 rounded-lg h-9 px-2 w-full outline-none"
+            onChange={(e) => props.setGender(e.target.value)}
           >
             <option
               className="bg-transparent "
@@ -69,22 +112,10 @@ function Form(props) {
             >
               Gender
             </option>
-            <option
-              className="bg-transparent text-black"
-              value="M"
-              onClick={(e) => {
-                props.setGender(e.target.value);
-              }}
-            >
+            <option className="bg-transparent text-black" value="Male">
               Male
             </option>
-            <option
-              className="bg-transparent text-black"
-              value="F"
-              onClick={(e) => {
-                props.setGender(e.target.value);
-              }}
-            >
+            <option className="bg-transparent text-black" value="Female">
               Female
             </option>
           </select>
@@ -100,7 +131,10 @@ function Form(props) {
             }}
           ></input>
           <div className="w-full flex justify-between items-center">
-            <select className="bg-transparent w-5/12 border-white border-2 rounded-lg h-9 px-2 outline-none ">
+            <select
+              className="bg-transparent w-5/12 border-white border-2 rounded-lg h-9 px-2 outline-none "
+              onChange={(e) => props.setResState(e.target.value)}
+            >
               <option
                 className="bg-transparent"
                 value=""
@@ -110,330 +144,15 @@ function Form(props) {
               >
                 State
               </option>
-              <option
-                className="bg-transparent text-black"
-                value="Andhra Pradesh"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Andhra Pradesh
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Andaman and Nicobar Islands"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Andaman and Nicobar Islands
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Arunachal Pradesh"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Arunachal Pradesh
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Assam"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Assam
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Bihar"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Bihar
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Chandigarh"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Chandigarh
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Chhattisgarh"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Chhattisgarh
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Dadar and Nagar Haveli"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Dadar and Nagar Haveli
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Daman and Diu"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Daman and Diu
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Delhi"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Delhi
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Lakshadweep"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Lakshadweep
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Puducherry"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Puducherry
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Goa"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Goa
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Gujarat"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Gujarat
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Haryana"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Haryana
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Himachal Pradesh"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Himachal Pradesh
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Jammu and Kashmir"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Jammu and Kashmir
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Jharkhand"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Jharkhand
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Karnataka"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Karnataka
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Kerala"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Kerala
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Madhya Pradesh"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Madhya Pradesh
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Maharashtra"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Maharashtra
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Manipur"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Manipur
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Meghalaya"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Meghalaya
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Mizoram"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Mizoram
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Nagaland"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Nagaland
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Odisha"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Odisha
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Punjab"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Punjab
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Rajasthan"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Rajasthan
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Sikkim"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Sikkim
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Tamil Nadu"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Tamil Nadu
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Telangana"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Telangana
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Tripura"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Tripura
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Uttar Pradesh"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Uttar Pradesh
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="Uttarakhand"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                Uttarakhand
-              </option>
-              <option
-                className="bg-transparent text-black"
-                value="West Bengal"
-                onClick={(e) => {
-                  props.setResState(e.target.value);
-                }}
-              >
-                West Bengal
-              </option>
+              {stateList.map((state, index) => (
+                <option
+                  key={index}
+                  className="bg-transparent text-black"
+                  value={state.value}
+                >
+                  {state.label}
+                </option>
+              ))}
             </select>
             <input
               type="text"
