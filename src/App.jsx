@@ -129,7 +129,7 @@ function Register(
     poc: poc,
   };
 
-  // console.log(registrationData);
+  console.log(registrationData);
   const date = new Date();
   var ISToffSet = 330; //IST is 5:30; i.e. 60*5+30 = 330 in minutes
   var ISTTime = new Date(date.getTime() + ISToffSet * 60 * 1000);
