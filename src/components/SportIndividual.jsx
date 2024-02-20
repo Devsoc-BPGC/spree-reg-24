@@ -7,6 +7,9 @@ function SportIndividual(props) {
   const sports = [
     "Basketball",
     "Badminton",
+    "Football",
+    "UFC",
+    "Snooker",
     "Carrom",
     "Chess",
     "Cricket",

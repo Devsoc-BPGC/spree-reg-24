@@ -5,6 +5,7 @@ const sportList = [
   { value: "", label: "Sport", disabled: true, hidden: true },
   { value: "Basketball", label: "Basketball" },
   { value: "Badminton", label: "Badminton" },
+  { value: "Football", label: "Football" },
   { value: "Carrom", label: "Carrom" },
   { value: "Chess", label: "Chess" },
   { value: "Cricket", label: "Cricket" },
@@ -12,6 +13,8 @@ const sportList = [
   { value: "Powerlifting", label: "Powerlifting" },
   { value: "Squash", label: "Squash" },
   { value: "Tennis", label: "Tennis" },
+  { value: "UFC", label: "UFC" },
+  { value: "Snooker", label: "Snooker" },
   { value: "Table Tennis", label: "Table Tennis" },
   { value: "Volleyball", label: "Volleyball" },
 ];
