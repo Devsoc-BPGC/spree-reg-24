@@ -134,6 +134,8 @@ function Register(
   var ISToffSet = 330; //IST is 5:30; i.e. 60*5+30 = 330 in minutes
   var ISTTime = new Date(date.getTime() + ISToffSet * 60 * 1000);
 
+  
+
   let usr_data = {
     Submit_Time: ISTTime,
     Name: registrationData.fullName,
@@ -141,27 +143,97 @@ function Register(
     Email: registrationData.email,
     Mobile_No: registrationData.phoneNumber,
     College_Name: registrationData.collegeName,
-    State: registrationData.resState,
     City: registrationData.city,
-  };
+    State: registrationData.resState,
+    Sport: registrationData.sport,
+    POC_name: registrationData.poc.fullName,
+    POC_num: registrationData.poc.phoneNumber,
+    
+    team_0_name: registrationData.teamData[0] ? registrationData.teamData[0].fullName : "",
+    team_0_num: registrationData.teamData[0] ? registrationData.teamData[0].phoneNumber : "", 
+    team_1_name: registrationData.teamData[1] ? registrationData.teamData[1].fullName : "",
+    team_1_num: registrationData.teamData[1] ? registrationData.teamData[1].phoneNumber : "",
+    team_2_name: registrationData.teamData[2] ? registrationData.teamData[2].fullName : "",
+    team_2_num: registrationData.teamData[2] ? registrationData.teamData[2].phoneNumber : "",
+    team_3_name: registrationData.teamData[3] ? registrationData.teamData[3].fullName : "",
+    team_3_num: registrationData.teamData[3] ? registrationData.teamData[3].phoneNumber : "",
 
-  fetch("apikey", {
-    method: "POST",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(usr_data),
-  })
-    .then((r) => r.json())
-    .then((data) => {
-      // The response comes here
-      console.log(data);
-    })
-    .catch((error) => {
-      // Errors are reported there
-      console.log(error);
-    });
+    team_4_name: registrationData.teamData[4] ? registrationData.teamData[4].fullName : "",
+    team_4_num: registrationData.teamData[4] ? registrationData.teamData[4].phoneNumber : "",
+    team_5_name: registrationData.teamData[5] ? registrationData.teamData[5].fullName : "",
+    team_5_num: registrationData.teamData[5] ? registrationData.teamData[5].phoneNumber : "",
+    team_6_name: registrationData.teamData[6] ? registrationData.teamData[6].fullName : "",
+    team_6_num: registrationData.teamData[6] ? registrationData.teamData[6].phoneNumber : "",
+    team_7_name: registrationData.teamData[7] ? registrationData.teamData[7].fullName : "",
+    team_7_num: registrationData.teamData[7] ? registrationData.teamData[7].phoneNumber : "",
+
+    team_8_name: registrationData.teamData[8] ? registrationData.teamData[8].fullName : "",
+    team_8_num: registrationData.teamData[8] ? registrationData.teamData[8].phoneNumber : "",
+    team_9_name: registrationData.teamData[9] ? registrationData.teamData[9].fullName : "",
+    team_9_num: registrationData.teamData[9] ? registrationData.teamData[9].phoneNumber : "",
+    team_10_name: registrationData.teamData[10] ? registrationData.teamData[10].fullName : "",
+    team_10_num: registrationData.teamData[10] ? registrationData.teamData[10].phoneNumber : "",
+    team_11_name: registrationData.teamData[11] ? registrationData.teamData[11].fullName : "",
+    team_11_num: registrationData.teamData[11] ? registrationData.teamData[11].phoneNumber : "",
+
+    team_12_name: registrationData.teamData[12] ? registrationData.teamData[12].fullName : "",
+    team_12_num: registrationData.teamData[12] ? registrationData.teamData[12].phoneNumber : "",
+    team_13_name: registrationData.teamData[13] ? registrationData.teamData[13].fullName : "",
+    team_13_num: registrationData.teamData[13] ? registrationData.teamData[13].phoneNumber : "",
+    team_14_name: registrationData.teamData[14] ? registrationData.teamData[14].fullName : "",
+    team_14_num: registrationData.teamData[14] ? registrationData.teamData[14].phoneNumber : "",
+    team_15_name: registrationData.teamData[15] ? registrationData.teamData[15].fullName : "",
+    team_15_num: registrationData.teamData[15] ? registrationData.teamData[15].phoneNumber : "",
+
+    team_16_name: registrationData.teamData[16] ? registrationData.teamData[16].fullName : "",
+    team_16_num: registrationData.teamData[16] ? registrationData.teamData[16].phoneNumber : "",
+    team_17_name: registrationData.teamData[17] ? registrationData.teamData[17].fullName : "",
+    team_17_num: registrationData.teamData[17] ? registrationData.teamData[17].phoneNumber : "",
+    team_18_name: registrationData.teamData[18] ? registrationData.teamData[18].fullName : "",
+    team_18_num: registrationData.teamData[18] ? registrationData.teamData[18].phoneNumber : "",
+    team_19_name: registrationData.teamData[19] ? registrationData.teamData[19].fullName : "",
+    team_19_num: registrationData.teamData[19] ? registrationData.teamData[19].phoneNumber : "",
+    
+  };
+  if(registrationData.mode=="individual"){
+
+        fetch("https://sheet.best/api/sheets/97a5ffc0-19cd-41c6-9ea0-a405fb98ca1e", {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(usr_data),
+        })
+          .then((r) => r.json())
+          .then((data) => {
+            // The response comes here
+            console.log(data);
+          })
+          .catch((error) => {
+            // Errors are reported there
+            console.log(error);
+          });
+  }
+  else{
+        fetch("https://sheet.best/api/sheets/9f81eb9e-462a-4b43-b9e9-d3723087f1ac", {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(usr_data),
+        })
+          .then((r) => r.json())
+          .then((data) => {
+            // The response comes here
+            console.log(data);
+          })
+          .catch((error) => {
+            // Errors are reported there
+            console.log(error);
+          });
+  }
 }
 
 export default App;
