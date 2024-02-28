@@ -115,6 +115,19 @@ function Register(
   teamData,
   poc
 ) {
+  if (
+    !fullName ||
+    !email ||
+    !phoneNumber ||
+    !gender ||
+    !collegeName ||
+    !resState ||
+    !city ||
+    !sport
+  ) {
+    alert("Please fill in all the required fields.");
+    return; // Exit function if validation fails
+  }
   const registrationData = {
     fullName: fullName,
     email: email,

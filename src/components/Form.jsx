@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const stateList = [
   { value: "Andhra Pradesh", label: "Andhra Pradesh" },
@@ -58,7 +58,7 @@ function Form(props) {
     setResState: PropTypes.func.isRequired,
     setCity: PropTypes.func.isRequired,
   };
-  
+
   const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowSizeChange() {
@@ -78,14 +78,16 @@ function Form(props) {
           <input
             type="text"
             placeholder="Full Name"
+            id="fullName"
             required
-            className={`bg-transparent border-white border-2 rounded-lg h-9 px-2 w-full outline-none ${
+            className={`bg-transparent  border-white border-2 rounded-lg h-9 px-2 w-full outline-none ${
               isMobile && "mt-2 mb-1"
             }`}
             onInput={(e) => {
               props.setFullName(e.target.value);
             }}
-          ></input>
+          />
+          {/* <span className="text-red-500">*</span> */}
           <input
             type="text"
             placeholder="Email"
