@@ -1,6 +1,10 @@
-import { useState } from "react";
+import PropTypes from 'prop-types';
 
 function SportIndividual(props) {
+  SportIndividual.propTypes = {
+    sport: PropTypes.string.isRequired,
+    setSport: PropTypes.func.isRequired,
+  };
   // const [sport, setSport] = useState("");
   // console.log(props.sport);
 

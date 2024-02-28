@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
 
 const stateList = [
   { value: "Andhra Pradesh", label: "Andhra Pradesh" },
@@ -42,12 +43,22 @@ const stateList = [
   { value: "West Bengal", label: "West Bengal" },
 ];
 
-document.addEventListener("wheel", function (event) {
+document.addEventListener("wheel", function () {
   if (document.activeElement.type === "number") {
     document.activeElement.blur();
   }
 });
 function Form(props) {
+  Form.propTypes = {
+    setFullName: PropTypes.func.isRequired,
+    setEmail: PropTypes.func.isRequired,
+    setPhoneNumber: PropTypes.func.isRequired,
+    setGender: PropTypes.func.isRequired,
+    setCollegeName: PropTypes.func.isRequired,
+    setResState: PropTypes.func.isRequired,
+    setCity: PropTypes.func.isRequired,
+  };
+  
   const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowSizeChange() {

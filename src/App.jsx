@@ -35,7 +35,7 @@ function App() {
     return () => {
       window.removeEventListener("resize", handleWindowSizeChange);
     };
-  }, []);
+  });
 
   const isMobile = width <= 768;
   return (

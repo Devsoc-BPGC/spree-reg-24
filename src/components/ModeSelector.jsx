@@ -1,4 +1,10 @@
+import PropTypes from 'prop-types';
+
 function ModeSelector(props) {
+  ModeSelector.propTypes = {
+    mode: PropTypes.string.isRequired,
+    setMode: PropTypes.func.isRequired,
+  };
   return (
     <>
       <div className="font-Skia flex justify-center items-center font-[800] text-3xl text-white">

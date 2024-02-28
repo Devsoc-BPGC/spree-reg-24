@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./SportTeam.css";
+import PropTypes from 'prop-types';
 
 const sportList = [
   { value: "", label: "Sport", disabled: true, hidden: true },
@@ -19,6 +20,12 @@ const sportList = [
   { value: "Volleyball", label: "Volleyball" },
 ];
 const Team = ({ m, i, teamData, setTeamData }) => {
+  Team.propTypes = {
+    m: PropTypes.number.isRequired,
+    i: PropTypes.number.isRequired,
+    teamData: PropTypes.array.isRequired,
+    setTeamData: PropTypes.func.isRequired,
+  };
   // const [fullName, setFullName] = useState("");
   // const [phoneNumber, setPhoneNumber] = useState("");
   // console.log(i);
@@ -68,7 +75,14 @@ const Team = ({ m, i, teamData, setTeamData }) => {
   );
 };
 
-const SportTeam = ({ sport, setSport, setTeamData, teamData, poc, setPoc }) => {
+const SportTeam = ({ sport, setSport, setTeamData, teamData, setPoc }) => {
+  SportTeam.propTypes = {
+    sport: PropTypes.string.isRequired,
+    setSport: PropTypes.func.isRequired,
+    setTeamData: PropTypes.func.isRequired,
+    teamData: PropTypes.array.isRequired,
+    setPoc: PropTypes.func.isRequired,
+  };
   const [width, setWidth] = useState(window.innerWidth);
 
   const [index, setIndex] = useState(3);
@@ -97,16 +111,16 @@ const SportTeam = ({ sport, setSport, setTeamData, teamData, poc, setPoc }) => {
 
   const isMobile = width <= 768;
   const [data, setData] = useState([
-    <Team m={1} i={0} teamData={teamData} setTeamData={setTeamData} />,
-    <Team i={1} teamData={teamData} setTeamData={setTeamData} />,
-    <Team i={2} teamData={teamData} setTeamData={setTeamData} />,
-    <Team i={3} teamData={teamData} setTeamData={setTeamData} />,
+    <Team key={teamData} m={1} i={0} teamData={teamData} setTeamData={setTeamData} />,
+    <Team key={teamData} i={1} teamData={teamData} setTeamData={setTeamData} />,
+    <Team key={teamData} i={2} teamData={teamData} setTeamData={setTeamData} />,
+    <Team key={teamData} i={3} teamData={teamData} setTeamData={setTeamData} />,
   ]);
 
   const handleAdd = async () => {
     setData((prevData) => [
       ...prevData,
-      <Team i={index + 1} setTeamData={setTeamData} teamData={teamData} />,
+      <Team key={teamData} i={index + 1} setTeamData={setTeamData} teamData={teamData} />,
     ]);
     setIndex((prevIndex) => prevIndex + 1);
   };
