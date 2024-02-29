@@ -1,0 +1,22 @@
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+.lwright {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 20px
+}
+
+.follow{
+    margin-left: -7px;
+}
+
+.regbtn {
+    font-family: 'Inter', sans-serif; 
+    font-weight: 600;
+    letter-spacing: 50px;
+  }
