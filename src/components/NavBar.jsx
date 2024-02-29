@@ -24,7 +24,7 @@ const NavBar = () => {
       </div>
       {/* Phone Dropdown */}
       <div className="lg:hidden">
-        <DropdownMenu className="bg-black z-20">
+        <DropdownMenu className="bg-black z-">
           <DropdownMenuTrigger asChild>
             <Button className="px-2 pb-5 h-14 w-14 bg-transparent">
               <svg
@@ -43,13 +43,13 @@ const NavBar = () => {
           <DropdownMenuContent className="w-56 mr-2 font-Alata text-black text-right bg-transparent md:hidden rounded outline-none border-none ">
             <DropdownMenuGroup>
               <DropdownMenuItem className="flex">
-                <Link to="/">Events</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="flex">
                 <Link to="/">Media Partners</Link>
               </DropdownMenuItem>
               <DropdownMenuItem className="flex">
                 <Link to="/">Our Team</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="flex">
+                <Link to="/">About Us</Link>
               </DropdownMenuItem>
               <DropdownMenuItem className="flex">
                 <Link to="/">Rule Book</Link>
