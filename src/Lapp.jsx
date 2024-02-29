@@ -50,7 +50,7 @@ function Lapp() {
       </div>
       <div className='follow'>
        
-      <a href="https://example.com" target="_blank" rel="noopener noreferrer"> {/* Open the link in a new tab */}
+      <a href="https://www.instagram.com/bitsspree/?hl=en" target="_blank" rel="noopener noreferrer"> {/* Open the link in a new tab */}
           <img src={insta} alt="Image" style={imageStyle} onClick={handleClick} /> {/* Set the image src, alt text, and style */}
         </a>
         
