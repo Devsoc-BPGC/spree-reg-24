@@ -33,15 +33,16 @@ function Lapp() {
       <div className='regbtn'>
         <Link to="/register">
         <button style={{ 
-          fontSize: '20px', 
+          fontSize: '15px', 
           color:'white', 
           border: '2.85px solid white', 
-          padding: '4px 0px', 
+          padding: '8px 13px', 
           background: 'rgba(0, 0, 0, 1)', 
           borderRadius: '999px', 
           cursor: 'pointer',
           width: buttonWidth, // Set the width of the button
           marginRight:'-13px',
+          letterSpacing:'0.25em'
         }}>REGISTER</button>
         </Link>
       </div> 
