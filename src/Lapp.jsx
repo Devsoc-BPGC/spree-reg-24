@@ -1,4 +1,3 @@
-import React from 'react';
 import land from "C:/Users/longi/WebD/spree-reg-24/src/assets/landing_img.svg";
 import insta from "./assets/insta.png"
 import { Link } from 'react-router-dom'

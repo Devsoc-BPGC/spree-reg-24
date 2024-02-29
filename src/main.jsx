@@ -1,9 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Rapp from './Rapp.jsx'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-import Lapp from './Lapp.jsx'
 import App from './App.jsx'
 import './index.css'
 

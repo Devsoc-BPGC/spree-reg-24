@@ -1,5 +1,3 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
 import Rapp from './Rapp.jsx'
 import {
   Route,
@@ -25,7 +23,7 @@ const router = createBrowserRouter(
   )
 );
 
-function App({ routes }) {
+function App() {
   return (
     <>
       <RouterProvider router={router} />
