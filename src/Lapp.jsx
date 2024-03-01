@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar";
 import { useState, useRef, useEffect } from "react";
 import "./Lapp.css";
 import { useMediaQuery } from 'react-responsive';
-import phonebg from './assets/phone.jpg'
+import phonebg from './assets/phone.png'
 
 function Lapp() {
   //timer start
@@ -130,8 +130,8 @@ function Lapp() {
         </div>
       </section>
 
-      <div className="absolute flex flex-wrap lg:bottom-0 lg:m-5 bottom-28 right-0 justify-evenly gap-4 mr-1 ml-1">
-        <div className="regbtn">
+      <div className="absolute flex flex-wrap lg:bottom-0 lg:m-5 bottom-20 right-0 justify-evenly gap-4 mr-1 ml-1">
+        <div className={"regbtn"}>
           <Link to="/register">
             <button
               style={{
@@ -160,12 +160,12 @@ function Lapp() {
             textAlign: "center",
           }}
         >
-          <p>
+          <p className={isMobile ? "hidden" : ""}>
             Embrace the challenge, rally for your convictions, and let the
             intensity of competition ignite the passion within.
           </p>
         </div>
-        <div className="follow">
+        <div className={isMobile ? "hidden" : "follow"}>
           <a
             href="https://www.instagram.com/bitsspree/?hl=en"
             target="_blank"
