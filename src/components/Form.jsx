@@ -73,8 +73,8 @@ function Form(props) {
   const isMobile = width <= 768;
   return (
     <>
-      <div className="flex justify-center items-center flex-col lg:w-5/12 border-white border-2 rounded-lg h-full">
-        <div className="flex justify-around h-full items-start flex-col w-5/6 text-ggrey">
+      <div className="flex justify-center items-center flex-col   lg:w-5/12 border-white border-2 py-4 lg:py-4 rounded-lg h-full">
+        <div className="flex justify-around h-full items-start flex-col lg:w-5/6 w-5/6 text-ggrey">
           <input
             type="text"
             placeholder="Full Name"
@@ -143,7 +143,7 @@ function Form(props) {
               props.setCollegeName(e.target.value);
             }}
           ></input>
-          <div className="w-full flex justify-between items-center">
+          <div className="w-full flex gap-4 justify-between items-center">
             <select
               className="bg-transparent w-5/12 border-white border-2 rounded-lg h-9 px-2 outline-none "
               onChange={(e) => props.setResState(e.target.value)}

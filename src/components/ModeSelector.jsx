@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function ModeSelector(props) {
   ModeSelector.propTypes = {
@@ -9,7 +9,7 @@ function ModeSelector(props) {
     <>
       <div className="font-Skia flex justify-center items-center font-[800] text-3xl text-white">
         <div
-          className={`rounded-l-3xl border-2 cursor-pointer border-white w-44 h-16 flex justify-center items-center ${
+          className={`rounded-l-3xl border-2 cursor-pointer border-white w-[13rem] h-16 lg:w-44 lg:h-16 flex justify-center items-center ${
             props.mode === "individual" ? "bg-[#bf3535] text-[#fff]" : ""
           }`}
           onClick={() => {
@@ -25,7 +25,7 @@ function ModeSelector(props) {
           Individual
         </div>
         <div
-          className={`rounded-r-3xl border-2 ]  border-white cursor-pointer w-44 h-16 flex justify-center items-center ${
+          className={`rounded-r-3xl border-2 ]  border-white cursor-pointer w-[13rem] h-16 lg:w-44 lg:h-16 flex justify-center items-center ${
             props.mode === "team" ? "bg-[#bf3535] text-[#fff]" : ""
           }`}
           onClick={() => {

@@ -41,12 +41,14 @@ function App() {
   return (
     <div className="min-h-screen min-w-full bg-[url('./assets/universalBg.jpg')] bg-no-repeat bg-cover bg-center flex justify-evenly items-center flex-col">
       <div className="flex justify-evenly items-center w-4/5">
-        <RegTitle />
+        <div className="py-6">
+          <RegTitle />
+        </div>
         {!isMobile && <ModeSelector setMode={setMode} mode={mode} />}
       </div>
       <div
         className={`flex justify-around lg:flex-row flex-col w-[80%] items-center lg:h-96 lg:w-4/5 ${
-          isMobile && "gap-4"
+          isMobile && "gap-8"
         }`}
       >
         <Form
@@ -58,7 +60,11 @@ function App() {
           setResState={setResState}
           setCity={setCity}
         />
-        {isMobile && <ModeSelector setMode={setMode} mode={mode} />}
+        {isMobile && (
+          <div className="w-[120%]">
+            <ModeSelector setMode={setMode} mode={mode} />
+          </div>
+        )}
 
         {mode == "individual" && (
           <SportIndividual sport={sport} setSport={setSport} />
@@ -74,10 +80,10 @@ function App() {
           />
         )}
       </div>
-      <div className="flex justify-start items-center lg:w-4/5">
+      <div className="flex justify-start lg:flex-row flex-col items-center w-full lg:w-4/5">
         <div className="lg:w-5/12 flex justify-center items-center">
           <button
-            className="border-white border-2 hover:bg-rred duration-300 active:bg-red-300 focus:outline-none rounded-lg text-white text-2xl px-5 py-2 font-Tourney font-black transition-colors"
+            className="border-white border-2 mt-4 lg:mt-0 hover:bg-rred duration-300 active:bg-red-300 focus:outline-none rounded-lg text-white text-2xl px-5 py-2 font-Tourney font-black transition-colors"
             onClick={() => {
               Register(
                 fullName,
@@ -95,6 +101,14 @@ function App() {
             }}
           >
             REGISTER
+          </button>
+        </div>
+        <div className="mt-4 mb-4 flex flex-wrap gap-8 relative justify-evenly flex-row items-center lg:absolute lg:right-0 lg:mr-[15%] lg:gap-8">
+          <button className="border-white flex border-2 hover:bg-rred duration-300 active:bg-red-300 focus:outline-none rounded-lg text-white text-2xl px-5 py-2 font-Tourney font-black transition-colors">
+            PAY NOW
+          </button>
+          <button className="border-white border-2 hover:bg-rred duration-300 active:bg-red-300 focus:outline-none rounded-lg text-white text-2xl px-5 py-2 font-Tourney font-black transition-colors">
+            RULE BOOK
           </button>
         </div>
       </div>
