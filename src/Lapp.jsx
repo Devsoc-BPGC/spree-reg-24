@@ -85,7 +85,7 @@ function Lapp() {
   };
 
   return (
-    <div style={styles} className="bgimg">
+    <div style={styles} className="bgimg max-h-[100vh]">
       <NavBar />
 
       <section className="timer-container">
@@ -124,7 +124,7 @@ function Lapp() {
         </div>
       </section>
 
-      <div className=" absolute flex lg:bottom-0 lg:m-5 bottom-28 justify-evenly gap-4 mr-1 ml-1">
+      <div className=" absolute flex lg:bottom-0 lg:m-5 bottom-28 right-0 justify-evenly gap-4 mr-1 ml-1">
         <div className="regbtn">
           <Link to="/register">
             <button
