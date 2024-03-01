@@ -28,7 +28,7 @@ function SportIndividual(props) {
   return (
     <>
       <div className="flex justify-center items-center flex-col h-full lg:w-5/12 border-white border-2 py-4 lg:py-0  rounded-lg">
-        <div className="flex justify-between items-start w-5/6 text-ggrey flex-wrap h-4/5 font-Tourney font-black">
+        <div className="flex justify-between items-start w-5/6 text-sm lg:text-xl text-ggrey flex-wrap h-4/5 font-Tourney font-black">
           {sports.map((sportName, index) => (
             <div
               key={index}
