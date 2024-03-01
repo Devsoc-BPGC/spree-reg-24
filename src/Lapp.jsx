@@ -5,6 +5,8 @@ import NavBar from "./components/NavBar";
 // import timer from "./Timer.jsx";
 import { useState, useRef, useEffect } from "react";
 import "./Lapp.css";
+import { useMediaQuery } from 'react-responsive';
+import phonebg from './assets/phone.jpg'
 
 function Lapp() {
   //timer start
@@ -63,8 +65,12 @@ function Lapp() {
   });
   //timer end
 
+    // Add this hook to dynamically detect screen size
+    const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+    const backgroundImage = isMobile ? phonebg : land;
+
   const styles = {
-    backgroundImage: `url(${land})`,
+    backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -88,7 +94,7 @@ function Lapp() {
     <div style={styles} className="bgimg max-h-[100vh]">
       <NavBar />
 
-      <section className="timer-container">
+      <section className={isMobile ? "hidden" : "timer-container"}>
         <div className="timer">
           {/* <div>
             <p>Timer</p>
@@ -98,7 +104,7 @@ function Lapp() {
               <small>Days</small>
             </p>
             <div className="gd">
-              <p>{timerDays}</p>
+              <p className="">{timerDays}</p>
               <p className="l">:</p>
             </div>
           </div>
@@ -108,7 +114,7 @@ function Lapp() {
               <small>Hours</small>
             </p>
             <div className="gd">
-              <p>{timerHours}</p>
+              <p className="">{timerHours}</p>
               <p className="l">:</p>
             </div>
           </div>
@@ -118,13 +124,13 @@ function Lapp() {
               <small>Minutes</small>
             </p>
             <div className="minute">
-              <p>{timerMinutes}</p>
+              <p className="">{timerMinutes}</p>
             </div>
           </div>
         </div>
       </section>
 
-      <div className=" absolute flex lg:bottom-0 lg:m-5 bottom-28 right-0 justify-evenly gap-4 mr-1 ml-1">
+      <div className="absolute flex flex-wrap lg:bottom-0 lg:m-5 bottom-28 right-0 justify-evenly gap-4 mr-1 ml-1">
         <div className="regbtn">
           <Link to="/register">
             <button
