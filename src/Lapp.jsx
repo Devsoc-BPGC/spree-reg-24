@@ -2,9 +2,76 @@ import land from "./assets/landing_img.svg";
 import insta from "./assets/insta.png";
 import { Link } from "react-router-dom";
 import NavBar from "./components/NavBar";
+// import timer from "./Timer.jsx";
+import { useState, useRef, useEffect } from 'react';
 import "./Lapp.css";
 
 function Lapp() {
+  //timer start
+  const [timerDays, setTimerDays] = useState('00')
+  const [timerHours, setTimerHours] = useState('00')
+  const [timerMinutes, setTimerMinutes] = useState('00')
+  // const [timerSec, setTimerSec] = useState('00')
+
+  // const cdDate = new Date('March 29, 2024 00:00:00').getTime();
+  // console.log(cdDate);
+
+
+  let interval = useRef();
+
+  const timed = () => {
+    const cdDate = new Date('March 29, 2024 00:00:00').getTime();
+
+    console.log(cdDate);
+
+
+      interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = cdDate - now;
+     console.log(Math.floor(distance/(1000*60*60*24)));
+
+    
+    
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance) % (1000 * 60 * 60*24) / (1000 * 60 *60));
+      const formattedHours = hours < 10 ? `0${hours}` : hours;
+      const minutes = Math.floor((distance) % (1000 * 60 * 60) / (1000 * 60));
+
+      // const seconds = Math.floor(distance % (1000 * 60) / (1000));
+
+      // console.log(days);
+
+      // console.log(distance / (1000 * 60 * 60 * 24));
+
+      
+      
+      if (distance < 0) {
+        clearInterval(interval.current);
+      } else {
+
+        setTimerDays(days);
+        setTimerHours(formattedHours);
+        // setTimerSeconds(seconds);
+        setTimerMinutes(minutes);
+      }
+
+    }, 1000);
+
+    
+
+  }
+
+  useEffect(() => {
+    timed();
+
+    return () => {
+      clearInterval(interval.current);
+    };
+  });
+  //timer end
+
+
   const styles = {
     backgroundImage: `url(${land})`,
     backgroundSize: "cover",
@@ -28,7 +95,45 @@ function Lapp() {
 
   return (
     <div style={styles} className="bgimg">
+
       <NavBar />
+
+      <section className="timer-container">
+        <div className="timer">
+          {/* <div>
+            <p>Timer</p>
+        </div> */}
+          <div className="day">
+            <p className="sm"><small>Days</small></p>
+            <div className="gd">
+            <p >{timerDays}</p>
+            <p className="l">:</p>
+            </div>
+
+          </div>
+          
+
+          <div className="hours">
+            <p className="sm"><small>Hours</small></p>
+            <div className="gd">
+              <p>{timerHours}</p>
+              <p className="l">:</p>
+              
+            </div>
+            
+
+          </div>
+
+          <div className="minutes">
+            <p className="sm1"><small>Minutes</small></p>
+            <div className="minute">
+            <p>{timerMinutes}</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <div className="lwright">
         <div className="regbtn">
           <Link to="/register">
