@@ -34,9 +34,11 @@ function Lapp() {
     
       
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const formattedDays = days < 10 ? `0${days}` : days;
       const hours = Math.floor((distance) % (1000 * 60 * 60*24) / (1000 * 60 *60));
       const formattedHours = hours < 10 ? `0${hours}` : hours;
       const minutes = Math.floor((distance) % (1000 * 60 * 60) / (1000 * 60));
+      const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
       // const seconds = Math.floor(distance % (1000 * 60) / (1000));
 
@@ -50,10 +52,10 @@ function Lapp() {
         clearInterval(interval.current);
       } else {
 
-        setTimerDays(days);
+        setTimerDays(formattedDays);
         setTimerHours(formattedHours);
         // setTimerSeconds(seconds);
-        setTimerMinutes(minutes);
+        setTimerMinutes(formattedMinutes);
       }
 
     }, 1000);
