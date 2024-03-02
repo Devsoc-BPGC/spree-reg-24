@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./SportTeam.css";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const sportList = [
   { value: "", label: "Sport", disabled: true, hidden: true },
@@ -55,6 +55,9 @@ const Team = ({ m, i, teamData, setTeamData }) => {
       className="flex justify-between items-center w-4/5"
       style={{ marginTop: `${m}rem` }}
     >
+      <span className="bg-black rounded-full p- text-lg font-extrabold  w-7 h-7 flex items-center justify-center">
+        {i + 1}
+      </span>
       {/* <input type="text" placeholder="Full Name" className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"></input>
                     <input type="number" placeholder="Phone Number" className="w-5/12 bg-transparent border-ggrey border-b-2 h-9 px-2 outline-none"></input> */}
       <input
@@ -111,7 +114,13 @@ const SportTeam = ({ sport, setSport, setTeamData, teamData, setPoc }) => {
 
   const isMobile = width <= 768;
   const [data, setData] = useState([
-    <Team key={teamData} m={1} i={0} teamData={teamData} setTeamData={setTeamData} />,
+    <Team
+      key={teamData}
+      m={1}
+      i={0}
+      teamData={teamData}
+      setTeamData={setTeamData}
+    />,
     <Team key={teamData} i={1} teamData={teamData} setTeamData={setTeamData} />,
     <Team key={teamData} i={2} teamData={teamData} setTeamData={setTeamData} />,
     <Team key={teamData} i={3} teamData={teamData} setTeamData={setTeamData} />,
@@ -120,7 +129,12 @@ const SportTeam = ({ sport, setSport, setTeamData, teamData, setPoc }) => {
   const handleAdd = async () => {
     setData((prevData) => [
       ...prevData,
-      <Team key={teamData} i={index + 1} setTeamData={setTeamData} teamData={teamData} />,
+      <Team
+        key={teamData}
+        i={index + 1}
+        setTeamData={setTeamData}
+        teamData={teamData}
+      />,
     ]);
     setIndex((prevIndex) => prevIndex + 1);
   };
