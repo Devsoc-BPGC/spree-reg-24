@@ -1,7 +1,7 @@
 function RegTitle() {
   return (
     <>
-      <div className="h font-Tourney text-[#ffbc6d] lg:text-5xl w-screen flex items-center justify-center text-3xl">
+      <div className="h font-Tourney text-[#ffbc6d] lg:text-5xl w-screen flex items-center lg:w-auto lg  justify-center text-3xl">
         REGISTRATION FORM
       </div>
     </>
