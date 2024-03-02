@@ -105,7 +105,7 @@ function App() {
                 REGISTER
               </button>
             </div>
-            <div className="mt-4 flex flex-wrap gap-8 relative justify-evenly flex-row items-center lg:absolute lg:right-0 lg:mr-[17%] lg:gap-8">
+            <div className="mt-4 flex w-full flex-wrap lg:w-auto relative justify-evenly flex-row items-center lg:absolute lg:right-0 lg:mr-[17%] lg:gap-8">
               <button className="border-white flex border-2 hover:bg-rred duration-300 active:bg-red-300 focus:outline-none rounded-lg text-white text-2xl px-5 py-2 font-Tourney font-black transition-colors">
                 PAY NOW
               </button>
